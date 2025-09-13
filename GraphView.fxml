@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.GraphController"
+            styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16" />
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Back to Main Menu" />
+                </tooltip>
+            </Button>
+
+            <FontIcon iconLiteral="fas-project-diagram" iconSize="24" styleClass="header-icon" />
+            <Label styleClass="module-title" text="Advanced Graph Algorithms - Professional Visualization" />
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Label styleClass="version-label" text="Professional Mode" />
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    styleClass="main-scroll-pane">
+            <content>
+                <VBox styleClass="scrollable-content">
+                    <padding>
+                        <Insets top="25.0" bottom="50.0" left="20.0" right="20.0" />
+                    </padding>
+
+                    <HBox spacing="25.0">
+                        <!-- Enhanced Control Panel -->
+                        <VBox spacing="15.0" styleClass="control-panel" prefWidth="480" minWidth="480">
+                            <Label styleClass="panel-title" text="🌐 Advanced Graph Controls" />
+
+                            <!-- Graph Configuration -->
+                            <VBox spacing="8.0">
+                                <Label text="Graph Configuration:" styleClass="section-label" />
+                                <HBox spacing="15.0">
+                                    <CheckBox fx:id="directedCheckBox" text="Directed Graph" styleClass="graph-checkbox" />
+                                    <CheckBox fx:id="weightedCheckBox" text="Weighted Edges" styleClass="graph-checkbox" />
+                                </HBox>
+                                <HBox spacing="15.0">
+                                    <CheckBox fx:id="showLabelsCheckBox" text="Show Labels" selected="true" styleClass="graph-checkbox" />
+                                    <CheckBox fx:id="showWeightsCheckBox" text="Show Weights" styleClass="graph-checkbox" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Enhanced Vertex Operations -->
+                            <VBox spacing="8.0">
+                                <Label text="Vertex Operations:" styleClass="section-label" />
+                                <HBox spacing="8.0">
+                                    <TextField fx:id="addVertexField" prefWidth="120" promptText="Vertex ID" styleClass="graph-input" />
+                                    <Button fx:id="addVertexButton" onAction="#addVertex" styleClass="control-button add-button" text="Add" prefWidth="85" />
+                                    <Button fx:id="removeVertexButton" onAction="#removeVertex" styleClass="control-button remove-button" text="Remove" prefWidth="85" />
+                                </HBox>
+                                <HBox spacing="8.0">
+                                    <TextField fx:id="searchVertexField" prefWidth="120" promptText="Search Vertex" styleClass="graph-input" />
+                                    <Button fx:id="searchButton" onAction="#searchVertex" styleClass="control-button search-button" text="Find" prefWidth="85" />
+                                    <Button fx:id="highlightButton" onAction="#highlightVertex" styleClass="control-button highlight-button" text="Highlight" prefWidth="85" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Enhanced Edge Operations -->
+                            <VBox spacing="8.0">
+                                <Label text="Edge Operations:" styleClass="section-label" />
+                                <HBox spacing="8.0">
+                                    <TextField fx:id="sourceField" prefWidth="75" promptText="From" styleClass="graph-input" />
+                                    <TextField fx:id="destinationField" prefWidth="75" promptText="To" styleClass="graph-input" />
+                                    <TextField fx:id="weightField" prefWidth="75" promptText="Weight" styleClass="graph-input" />
+                                </HBox>
+                                <HBox spacing="8.0">
+                                    <Button fx:id="addEdgeButton" onAction="#addEdge" styleClass="control-button play-button" text="Add Edge" prefWidth="110" />
+                                    <Button fx:id="removeEdgeButton" onAction="#removeEdge" styleClass="control-button reset-button" text="Remove Edge" prefWidth="110" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Advanced Algorithm Selection -->
+                            <VBox spacing="8.0">
+                                <Label text="Advanced Algorithms:" styleClass="section-label" />
+                                <ComboBox fx:id="algorithmComboBox" prefWidth="420" styleClass="algorithm-combo" />
+                                <HBox spacing="8.0">
+                                    <TextField fx:id="startVertexField" prefWidth="100" promptText="Start Vertex" styleClass="graph-input" />
+                                    <TextField fx:id="endVertexField" prefWidth="100" promptText="End Vertex" styleClass="graph-input" />
+                                    <Button fx:id="traverseButton" onAction="#performTraversal" styleClass="category-button" text="Execute" prefWidth="120" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Layout Controls -->
+                            <VBox spacing="8.0">
+                                <Label text="Graph Layout:" styleClass="section-label" />
+                                <HBox spacing="8.0">
+                                    <Button fx:id="circularLayoutButton" onAction="#applyCircularLayout" styleClass="control-button layout-button" text="Circular" prefWidth="100" />
+                                    <Button fx:id="forceLayoutButton" onAction="#applyForceLayout" styleClass="control-button layout-button" text="Force" prefWidth="100" />
+                                    <Button fx:id="resetLayoutButton" onAction="#resetLayout" styleClass="control-button layout-button" text="Reset" prefWidth="100" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Graph Statistics -->
+                            <VBox spacing="8.0">
+                                <Label text="Graph Statistics:" styleClass="section-label" />
+                                <VBox spacing="5.0" styleClass="stats-container">
+                                    <Label fx:id="statusLabel" text="Graph is Empty" styleClass="status-text" />
+                                    <Label fx:id="vertexCountLabel" text="Vertices: 0" styleClass="stat-label" />
+                                    <Label fx:id="edgeCountLabel" text="Edges: 0" styleClass="stat-label" />
+                                    <Label fx:id="densityLabel" text="Density: 0%" styleClass="stat-label" />
+                                </VBox>
+                                <ProgressBar fx:id="operationProgress" prefWidth="420" styleClass="operation-progress" />
+                            </VBox>
+
+                            <!-- Enhanced Utility Controls -->
+                            <VBox spacing="8.0">
+                                <Label text="Utilities:" styleClass="section-label" />
+                                <HBox spacing="8.0">
+                                    <Button fx:id="undoButton" onAction="#undoOperation" styleClass="control-button undo-button" text="Undo" prefWidth="85" />
+                                    <Button fx:id="redoButton" onAction="#redoOperation" styleClass="control-button redo-button" text="Redo" prefWidth="85" />
+                                    <Button fx:id="saveButton" onAction="#saveGraph" styleClass="control-button save-button" text="Save" prefWidth="85" />
+                                    <Button fx:id="loadButton" onAction="#loadGraph" styleClass="control-button load-button" text="Load" prefWidth="85" />
+                                </HBox>
+                                <HBox spacing="8.0">
+                                    <Button fx:id="clearButton" onAction="#clearGraph" styleClass="control-button clear-button" text="Clear All" prefWidth="120" />
+                                    <Button fx:id="randomButton" onAction="#generateRandomGraph" styleClass="control-button random-button" text="Random Graph" prefWidth="120" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Enhanced Operation History -->
+                            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                                <Label text="Operation History:" styleClass="section-label" />
+                                <TextArea fx:id="operationHistory"
+                                          prefHeight="120"
+                                          minHeight="120"
+                                          styleClass="info-area"
+                                          wrapText="true"
+                                          editable="false" />
+                            </VBox>
+                        </VBox>
+
+                        <!-- Enhanced Visualization Area -->
+                        <VBox spacing="15.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="🌐 Interactive Graph Visualization" />
+
+                            <!-- Enhanced Graph Canvas with Controls -->
+                            <VBox spacing="10.0">
+                                <HBox spacing="10.0" alignment="CENTER_LEFT" styleClass="canvas-controls">
+                                    <Label text="Canvas Controls:" styleClass="control-label" />
+                                    <Button fx:id="zoomInButton" onAction="#zoomIn" styleClass="control-button zoom-button" text="+" prefWidth="40">
+                                        <tooltip>
+                                            <Tooltip text="Zoom In (Ctrl + +)" />
+                                        </tooltip>
+                                    </Button>
+                                    <Button fx:id="zoomOutButton" onAction="#zoomOut" styleClass="control-button zoom-button" text="−" prefWidth="40">
+                                        <tooltip>
+                                            <Tooltip text="Zoom Out (Ctrl + -)" />
+                                        </tooltip>
+                                    </Button>
+                                    <Button fx:id="resetZoomButton" onAction="#resetZoom" styleClass="control-button zoom-button" text="Reset" prefWidth="60">
+                                        <tooltip>
+                                            <Tooltip text="Reset Zoom (Ctrl + 0)" />
+                                        </tooltip>
+                                    </Button>
+                                    <Separator orientation="VERTICAL" />
+                                    <Label text="Zoom Level: 100%" fx:id="zoomLevelLabel" styleClass="zoom-level-label" />
+                                </HBox>
+
+                                <ScrollPane fx:id="canvasScrollPane"
+                                            prefHeight="450"
+                                            prefWidth="600"
+                                            styleClass="graph-canvas-scroll"
+                                            pannable="true"
+                                            hbarPolicy="AS_NEEDED"
+                                            vbarPolicy="AS_NEEDED">
+                                    <Pane fx:id="graphCanvas"
+                                          prefHeight="800"
+                                          prefWidth="800"
+                                          styleClass="graph-canvas"
+                                          minHeight="800"
+                                          minWidth="800" />
+                                </ScrollPane>
+
+                                <!-- Canvas Status Bar -->
+                                <HBox spacing="10.0" alignment="CENTER_LEFT" styleClass="canvas-status">
+                                    <Label text="Canvas Status:" styleClass="control-label" />
+                                    <Label fx:id="canvasStatusLabel" text="Ready" styleClass="status-text" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Label text="Mouse: " styleClass="control-label" />
+                                    <Label fx:id="mousePositionLabel" text="(0, 0)" styleClass="stat-label" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Enhanced Results Area -->
+                            <VBox spacing="10.0">
+                                <Label text="Algorithm Results:" styleClass="section-label" />
+                                <TextArea fx:id="resultArea"
+                                          prefHeight="120"
+                                          minHeight="120"
+                                          styleClass="info-area"
+                                          wrapText="true"
+                                          editable="false" />
+                            </VBox>
+
+                            <!-- Algorithm Code Viewer -->
+                            <VBox spacing="10.0" VBox.vgrow="ALWAYS" styleClass="code-viewer-pane">
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <Label styleClass="viz-title" text="💻 Algorithm Pseudocode" />
+                                    <Region HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="copyCodeButton"
+                                            text="📋 Copy Code"
+                                            styleClass="control-button copy-button"
+                                            onAction="#copyCodeToClipboard">
+                                        <tooltip>
+                                            <Tooltip text="Copy algorithm implementation to clipboard (Ctrl+C)" />
+                                        </tooltip>
+                                    </Button>
+
+                                </HBox>
+                                <TextArea fx:id="algorithmCodeViewer"
+                                          prefHeight="300"
+                                          minHeight="300"
+                                          wrapText="false"
+                                          styleClass="code-area"
+                                          editable="false"
+                                          VBox.vgrow="ALWAYS" />
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Enhanced Status Bar -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="status-bar">
+            <padding>
+                <Insets top="10.0" bottom="10.0" left="20.0" right="20.0" />
+            </padding>
+
+            <FontIcon iconLiteral="fas-info-circle" iconSize="14" styleClass="status-icon" />
+            <Label fx:id="bottomStatusLabel" text="Ready to create graphs" styleClass="status-bar-text" />
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Label text="Vertices:" styleClass="status-bar-label" />
+            <Label fx:id="bottomVertexCount" text="0" styleClass="status-bar-value" />
+
+            <Separator orientation="VERTICAL" />
+
+            <Label text="Edges:" styleClass="status-bar-label" />
+            <Label fx:id="bottomEdgeCount" text="0" styleClass="status-bar-value" />
+
+            <Separator orientation="VERTICAL" />
+
+            <Label text="Algorithm:" styleClass="status-bar-label" />
+            <Label fx:id="currentAlgorithmLabel" text="None" styleClass="status-bar-value" />
+        </HBox>
+    </bottom>
+</BorderPane>

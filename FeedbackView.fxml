@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.simulator.FeedbackController" styleClass="feedback-dialog">
+
+    <!-- Header -->
+    <HBox alignment="CENTER" styleClass="feedback-header">
+        <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+        </padding>
+        <FontIcon iconLiteral="fas-comment-dots" iconSize="24" styleClass="header-icon" />
+        <Label styleClass="header-title" text="Send Feedback to Developer">
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </Label>
+    </HBox>
+
+    <!-- Form Container -->
+    <ScrollPane fitToWidth="true" styleClass="form-scroll">
+        <VBox spacing="20.0" styleClass="form-container">
+            <padding>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="20.0" />
+            </padding>
+
+            <!-- User Information Section -->
+            <VBox spacing="12.0" styleClass="form-section">
+                <Label styleClass="section-title" text="👤 Your Information" />
+
+                <GridPane hgap="15.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="120.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="250.0" />
+                    </columnConstraints>
+
+                    <Label styleClass="field-label" text="Name*:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="nameField" promptText="Your full name" styleClass="feedback-input"
+                               GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label styleClass="field-label" text="Email*:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="emailField" promptText="your.email@example.com" styleClass="feedback-input"
+                               GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label styleClass="field-label" text="Location:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="locationField" promptText="City, Country" styleClass="feedback-input"
+                               GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label styleClass="field-label" text="OS:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <ComboBox fx:id="osComboBox" prefWidth="200.0" styleClass="feedback-input"
+                              GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                </GridPane>
+            </VBox>
+
+            <!-- Issue Description Section -->
+            <VBox spacing="12.0" styleClass="form-section">
+                <Label styleClass="section-title" text="🐛 Issue Details" />
+
+                <VBox spacing="8.0">
+                    <Label styleClass="field-label" text="Issue Type:" />
+                    <ComboBox fx:id="issueTypeComboBox" prefWidth="250.0" styleClass="feedback-input" />
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <Label styleClass="field-label" text="Detailed Description*:" />
+                    <TextArea fx:id="descriptionArea" prefRowCount="6" promptText="Please describe the issue in detail..."
+                              styleClass="feedback-textarea" wrapText="true" />
+                </VBox>
+            </VBox>
+
+            <!-- Attachments Section -->
+            <VBox spacing="12.0" styleClass="form-section">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label styleClass="section-title" text="📎 Attachments" />
+                    <Button fx:id="attachButton" onAction="#selectFiles" styleClass="attachment-button">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-paperclip" iconSize="14" />
+                        </graphic>
+                    </Button>
+                </HBox>
+
+                <Label styleClass="info-label" text="Supported: Images, Videos, Documents (Max 10MB per file)" />
+
+                <ListView fx:id="attachmentList" prefHeight="120.0" styleClass="attachment-list" />
+            </VBox>
+
+            <!-- Action Buttons - Moved upward -->
+            <HBox alignment="CENTER" spacing="15.0" styleClass="feedback-buttons">
+                <padding>
+                    <Insets top="10.0" bottom="5.0" />
+                </padding>
+
+                <Button fx:id="cancelButton" onAction="#cancel" styleClass="feedback-cancel-button" text="Cancel" />
+                <Button fx:id="sendButton" onAction="#sendFeedback" styleClass="feedback-send-button" text="Send Feedback">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-paper-plane" iconSize="14" />
+                    </graphic>
+                </Button>
+            </HBox>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Progress Indicator -->
+    <ProgressBar fx:id="progressBar" prefWidth="400.0" styleClass="feedback-progress" visible="false" />
+
+</VBox>

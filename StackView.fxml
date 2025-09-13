@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.StackController" styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16" />
+                </graphic>
+            </Button>
+
+            <FontIcon iconLiteral="fas-layer-group" iconSize="24" styleClass="header-icon" />
+            <Label styleClass="module-title" text="Stack Operations - LIFO Data Structure" />
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- ✅ NEW: Codes Button -->
+            <!-- ✅ CORRECT - This works -->
+            <Button fx:id="codesButton" onAction="#openCodesPopup" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-code" iconSize="16" />
+                </graphic>
+                <tooltip>
+                    <Tooltip text="View Stack Code Examples" />
+                </tooltip>
+            </Button>
+
+            <Label styleClass="version-label" text="Interactive Mode" />
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+
+            <!-- Control Panel -->
+            <VBox spacing="15.0" styleClass="control-panel" prefWidth="320">
+                <Label styleClass="panel-title" text="🎛️ Stack Operations" />
+
+                <!-- Input Section -->
+                <VBox spacing="8.0">
+                    <Label text="Enter Value:" />
+                    <TextField fx:id="inputField" promptText="Enter number (1-999)" styleClass="input-field" />
+                </VBox>
+
+                <!-- Operation Buttons -->
+                <VBox spacing="8.0">
+                    <Label text="Operations:" />
+                    <HBox spacing="8.0">
+                        <Button fx:id="pushButton" onAction="#pushElement" styleClass="control-button push-button" text="Push" prefWidth="75" />
+                        <Button fx:id="popButton" onAction="#popElement" styleClass="control-button pop-button" text="Pop" prefWidth="75" />
+                        <Button fx:id="peekButton" onAction="#peekElement" styleClass="control-button peek-button" text="Peek" prefWidth="75" />
+                        <Button fx:id="clearButton" onAction="#clearStack" styleClass="control-button clear-button" text="Clear" prefWidth="75" />
+                    </HBox>
+                </VBox>
+
+
+                <!-- Stack Information -->
+                <VBox spacing="8.0">
+                    <Label text="Stack Status:" />
+                    <VBox spacing="5.0">
+                        <Label fx:id="statusLabel" text="Stack is Empty" styleClass="status-text" />
+                        <Label fx:id="sizeLabel" text="Size: 0" styleClass="stat-label" />
+                        <Label fx:id="topLabel" text="Top: null" styleClass="stat-label" />
+                        <Label fx:id="capacityLabel" text="Capacity: 0/15" styleClass="stat-label" />
+                    </VBox>
+                    <ProgressBar fx:id="capacityBar" prefWidth="300" />
+                </VBox>
+
+                <!-- Operation History -->
+                <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <Label text="Operation History:" />
+                    <TextArea fx:id="operationHistory" prefHeight="150" styleClass="info-area" />
+                </VBox>
+            </VBox>
+
+            <!-- Visualization Area -->
+            <VBox spacing="15.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                <Label styleClass="viz-title" text="📚 Stack Visualization" />
+
+                <VBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
+                    <Label text="LIFO (Last In, First Out)" styleClass="info-text" />
+
+                    <!-- Stack Container -->
+                    <ScrollPane fitToHeight="true" prefHeight="400" prefWidth="200">
+                        <VBox fx:id="stackContainer" alignment="BOTTOM_CENTER" spacing="3" styleClass="stack-visualization" />
+                    </ScrollPane>
+
+                    <!-- Base Label -->
+                    <Label text="Stack Base" styleClass="base-label" />
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

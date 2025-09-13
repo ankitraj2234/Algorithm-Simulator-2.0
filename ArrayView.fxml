@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.ArrayController" styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16" />
+                </graphic>
+            </Button>
+
+            <FontIcon iconLiteral="fas-th-list" iconSize="24" styleClass="header-icon" />
+            <Label styleClass="module-title" text="Array Operations - Dynamic Array Management" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+
+            <!-- Control Panel -->
+            <VBox spacing="15.0" styleClass="control-panel">
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                </padding>
+
+                <!-- Array Size Control -->
+                <HBox spacing="20.0" alignment="CENTER_LEFT">
+                    <VBox spacing="5.0">
+                        <Label fx:id="arraySizeLabel" text="Array Size: 10" />
+                        <Slider fx:id="arraySizeSlider" prefWidth="200" />
+                    </VBox>
+
+                    <Button fx:id="generateButton" onAction="#generateRandomArray" styleClass="generate-button" text="Generate Random" />
+                </HBox>
+
+                <!-- Input Controls -->
+                <HBox spacing="20.0" alignment="CENTER_LEFT">
+                    <VBox spacing="5.0">
+                        <Label text="Value:" />
+                        <TextField fx:id="valueField" prefWidth="100" />
+                    </VBox>
+
+                    <VBox spacing="5.0">
+                        <Label text="Index:" />
+                        <TextField fx:id="indexField" prefWidth="80" />
+                    </VBox>
+
+                    <!-- Operation Buttons -->
+                    <VBox spacing="5.0">
+                        <Label text="Operations:" />
+                        <HBox spacing="5.0">
+                            <Button fx:id="insertButton" onAction="#insertElement" styleClass="control-button push-button" text="Insert" />
+                            <Button fx:id="deleteButton" onAction="#deleteElement" styleClass="control-button pop-button" text="Delete" />
+                            <Button fx:id="updateButton" onAction="#updateElement" styleClass="control-button step-button" text="Update" />
+                            <Button fx:id="searchButton" onAction="#searchElement" styleClass="control-button peek-button" text="Search" />
+                        </HBox>
+                    </VBox>
+
+                    <!-- Utility Buttons -->
+                    <VBox spacing="5.0">
+                        <Label text="Utilities:" />
+                        <HBox spacing="5.0">
+                            <Button fx:id="clearButton" onAction="#clearArray" styleClass="control-button clear-button" text="Clear" />
+                            <Button fx:id="demoButton" onAction="#runDemo" styleClass="category-button" text="Demo" />
+                        </HBox>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Visualization Area -->
+            <VBox spacing="15.0" styleClass="visualization-pane" VBox.vgrow="ALWAYS">
+                <Label styleClass="viz-title" text="📊 Array Visualization" />
+
+                <!-- Array Display -->
+                <ScrollPane fitToHeight="true" prefHeight="100">
+                    <HBox fx:id="arrayVisualization" spacing="5" alignment="CENTER" />
+                </ScrollPane>
+
+                <!-- Status and Results -->
+                <HBox spacing="30.0" alignment="CENTER_LEFT">
+                    <Label fx:id="statusLabel" text="Array is Empty" styleClass="status-text" />
+                    <Label fx:id="sizeLabel" text="Size: 0" styleClass="stat-label" />
+                    <Label fx:id="resultLabel" text="Results will appear here" styleClass="info-text" />
+                </HBox>
+
+                <ProgressBar fx:id="operationProgress" prefWidth="600" />
+
+                <!-- Operation History -->
+                <TextArea fx:id="operationHistory" prefHeight="150" styleClass="info-area" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

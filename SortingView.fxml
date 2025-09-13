@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.SortingController"
+            styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16" />
+                </graphic>
+                <tooltip>
+                    <Tooltip text="Back to Main Menu" />
+                </tooltip>
+            </Button>
+
+            <FontIcon iconLiteral="fas-sort-numeric-up" iconSize="24" styleClass="header-icon" />
+            <Label styleClass="module-title" text="Sorting Algorithms - Interactive Visualization" />
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Label styleClass="version-label" text="Professional Mode" />
+        </HBox>
+    </top>
+
+    <center>
+        <!-- ✅ PROFESSIONAL: ScrollPane wrapper for better scrolling control -->
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    styleClass="main-scroll-pane">
+            <content>
+                <VBox styleClass="scrollable-content">
+                    <padding>
+                        <Insets top="25.0" bottom="50.0" left="20.0" right="20.0" />
+                    </padding>
+
+                    <HBox spacing="25.0">
+                        <!-- Control Panel - MAJOR WIDTH INCREASE (360 → 500) for excellent button visibility -->
+                        <VBox spacing="15.0" styleClass="control-panel" prefWidth="500" minWidth="500" maxWidth="500">
+                            <Label styleClass="panel-title" text="🎛️ Control Panel" />
+
+                            <!-- Algorithm Selection -->
+                            <VBox spacing="8.0">
+                                <Label text="Algorithm:" />
+                                <ComboBox fx:id="algorithmComboBox" prefWidth="200" minWidth="200" styleClass="algorithm-combo" />
+                            </VBox>
+
+                            <!-- Array Configuration -->
+                            <VBox spacing="8.0">
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <Label text="Array Size:" />
+                                    <Label fx:id="arraySizeLabel" text="Size: 20" styleClass="info-text" />
+                                </HBox>
+                                <Slider fx:id="arraySizeSlider" min="5" max="50" value="20" showTickLabels="true" showTickMarks="true" majorTickUnit="10" prefWidth="450" />
+                            </VBox>
+
+                            <!-- Speed Control -->
+                            <VBox spacing="8.0">
+                                <Label text="Animation Speed:" />
+                                <Slider fx:id="speedSlider" min="0.1" max="3.0" value="1.0" showTickLabels="true" showTickMarks="true" majorTickUnit="1" prefWidth="450" />
+                            </VBox>
+
+                            <!-- Array Generation - MAJOR WIDTH INCREASE for button text visibility -->
+                            <VBox spacing="8.0">
+                                <Label text="Array Generation:" />
+                                <HBox spacing="15.0" alignment="CENTER">
+                                    <Button fx:id="generateRandomButton" onAction="#generateRandomArray" styleClass="generate-button" text="🎲 Random" prefWidth="125" minWidth="125" />
+                                    <Button fx:id="generateCustomButton" onAction="#generateCustomArray" styleClass="custom-button" text="✏️ Custom" prefWidth="125" minWidth="125" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Control Buttons - MAJOR WIDTH INCREASE for perfect button text visibility -->
+                            <VBox spacing="10.0">
+                                <Label text="Controls:" />
+                                <HBox spacing="10.0" alignment="CENTER">
+                                    <Button fx:id="playButton" onAction="#startSorting" styleClass="control-button play-button" text="▶ Start" prefWidth="100" minWidth="100" />
+                                    <Button fx:id="pauseButton" onAction="#pauseSorting" styleClass="control-button pause-button" text="⏸ Pause" prefWidth="100" minWidth="100" />
+                                </HBox>
+                                <HBox spacing="10.0" alignment="CENTER">
+                                    <Button fx:id="resetButton" onAction="#resetArray" styleClass="control-button reset-button" text="🔄 Reset" prefWidth="100" minWidth="100" />
+                                    <Button fx:id="stepButton" onAction="#stepForward" styleClass="control-button step-button" text="⏭ Step" prefWidth="100" minWidth="100" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Progress and Statistics -->
+                            <VBox spacing="8.0">
+                                <Label text="Progress &amp; Statistics:" />
+                                <ProgressBar fx:id="sortingProgress" prefWidth="450" />
+                                <Label fx:id="progressLabel" text="Ready to sort" styleClass="info-text" />
+                                <VBox spacing="5.0">
+                                    <Label fx:id="comparisonsLabel" text="Comparisons: 0" styleClass="stat-label" />
+                                    <Label fx:id="swapsLabel" text="Swaps: 0" styleClass="stat-label" />
+                                    <Label fx:id="timeLabel" text="Time: 0ms" styleClass="stat-label" />
+                                </VBox>
+                            </VBox>
+
+                            <!-- Algorithm Information - DOUBLED HEIGHT for better readability -->
+                            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                                <Label text="Algorithm Details:" />
+                                <TextArea fx:id="algorithmInfo" prefHeight="300" minHeight="300" styleClass="info-area" wrapText="true" />
+                            </VBox>
+                        </VBox>
+
+                        <!-- Visualization Area -->
+                        <VBox spacing="15.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="📊 Array Visualization" />
+
+                            <!-- Bar Chart Visualization -->
+                            <BarChart fx:id="arrayChart" prefHeight="400" styleClass="sorting-chart">
+                                <xAxis>
+                                    <CategoryAxis fx:id="xAxis" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxis" />
+                                </yAxis>
+                            </BarChart>
+
+                            <!-- Array Values Display -->
+                            <VBox spacing="8.0">
+                                <Label text="Array Values:" />
+                                <ScrollPane fitToWidth="true" prefHeight="80">
+                                    <HBox fx:id="arrayValuesContainer" spacing="5" styleClass="array-display" />
+                                </ScrollPane>
+                            </VBox>
+
+                            <!-- Algorithm Code Viewer -->
+                            <VBox spacing="10.0" VBox.vgrow="ALWAYS" styleClass="code-viewer-pane">
+                                <Label styleClass="viz-title" text="💻 Algorithm Code Viewer" />
+                                <TextArea fx:id="algorithmCodeViewer"
+                                          prefHeight="300"
+                                          minHeight="300"
+                                          wrapText="false"
+                                          styleClass="code-area"
+                                          editable="false" />
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

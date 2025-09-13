@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.MainController"
+            styleClass="main-layout">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="nav-bar">
+            <padding>
+                <Insets bottom="15.0" left="25.0" right="25.0" top="15.0" />
+            </padding>
+
+            <!-- App Logo and Title -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+                <FontIcon iconLiteral="fas-laptop-code" iconSize="32" styleClass="title-icon" />
+                <VBox>
+                    <Label styleClass="app-title" text="Algorithm Simulator" />
+                    <Label styleClass="app-subtitle" text="Professional Edition v2.0" />
+                </VBox>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- Navigation Controls -->
+            <HBox alignment="CENTER_RIGHT" spacing="12.0">
+                <Button onAction="#showSettings" styleClass="nav-button">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-cog" iconSize="18" />
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Settings" />
+                    </tooltip>
+                </Button>
+                <!-- In your existing navigation controls HBox, add this before the theme toggle button -->
+                <Button onAction="#showFeedback" styleClass="nav-button">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-comment-alt" iconSize="18" />
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Send Feedback" />
+                    </tooltip>
+                </Button>
+
+                <!-- UPDATED: Theme Toggle Button with Emoji (No FontIcon) -->
+                <Button fx:id="themeToggleButton" onAction="#toggleTheme" styleClass="nav-button" text="🌙">
+                    <tooltip>
+                        <Tooltip text="Toggle Dark/Light Theme (Ctrl+T)" />
+                    </tooltip>
+                </Button>
+
+                <Button onAction="#showAbout" styleClass="nav-button">
+                    <graphic>
+                        <FontIcon iconLiteral="fas-info-circle" iconSize="18" />
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="About" />
+                    </tooltip>
+                </Button>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <ScrollPane styleClass="main-scroll" fitToWidth="true">
+            <VBox spacing="40.0" styleClass="main-content">
+                <padding>
+                    <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </padding>
+
+                <!-- Welcome Section -->
+                <VBox alignment="CENTER" spacing="24.0" styleClass="welcome-section">
+                    <FontIcon iconLiteral="fas-graduation-cap" iconSize="64" styleClass="welcome-icon" />
+                    <Label styleClass="welcome-title" text="Interactive Algorithm Learning" />
+                    <Label styleClass="welcome-subtitle" text="Master Data Structures &amp; Algorithms with Visual Learning" />
+                    <TextFlow textAlignment="CENTER" maxWidth="800" prefWidth="700">
+                        <Text styleClass="welcome-description"
+                              text="Explore sorting algorithms, search techniques, data structures, and performance analysis through interactive visualizations designed for computer science education." />
+                        <padding>
+                            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                        </padding>
+                    </TextFlow>
+                </VBox>
+
+                <!-- Statistics Section -->
+                <HBox alignment="CENTER" spacing="60.0" styleClass="stats-section">
+                    <VBox alignment="CENTER" styleClass="stat-item">
+                        <Label styleClass="stat-number" text="7" />
+                        <Label styleClass="stat-label" text="ALGORITHMS" />
+                    </VBox>
+                    <VBox alignment="CENTER" styleClass="stat-item">
+                        <Label styleClass="stat-number" text="5" />
+                        <Label styleClass="stat-label" text="DATA STRUCTURES" />
+                    </VBox>
+                    <VBox alignment="CENTER" styleClass="stat-item">
+                        <Label styleClass="stat-number" text="∞" />
+                        <Label styleClass="stat-label" text="LEARNING" />
+                    </VBox>
+                </HBox>
+
+                <!-- Categories Grid -->
+                <GridPane alignment="CENTER" hgap="24.0" vgap="24.0" styleClass="categories-grid">
+
+                    <!-- First Row -->
+                    <!-- Sorting Algorithms -->
+                    <VBox fx:id="sortingCard" alignment="CENTER" spacing="16.0" styleClass="category-card,sorting-card"
+                          GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <FontIcon iconLiteral="fas-sort-amount-up" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Sorting Algorithms" />
+                        <Label styleClass="category-description" text="Visualize Bubble, Selection, Insertion, Merge, and Quick Sort with step-by-step animations" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="sortingButton" styleClass="category-button" text="Explore Sorting" />
+                    </VBox>
+
+                    <!-- Search Algorithms -->
+                    <VBox fx:id="searchCard" alignment="CENTER" spacing="16.0" styleClass="category-card,search-card"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <FontIcon iconLiteral="fas-search" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Search Algorithms" />
+                        <Label styleClass="category-description" text="Learn Linear, Binary, and Interpolation Search with performance comparisons" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="searchButton" styleClass="category-button" text="Explore Search" />
+                    </VBox>
+
+                    <!-- Stack Operations -->
+                    <VBox fx:id="stackCard" alignment="CENTER" spacing="16.0" styleClass="category-card,stack-card"
+                          GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <FontIcon iconLiteral="fas-layer-group" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Stack Operations" />
+                        <Label styleClass="category-description" text="Master LIFO data structure with Push, Pop, and Peek operations" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="stackButton" styleClass="category-button" text="Explore Stack" />
+                    </VBox>
+
+                    <!-- Second Row -->
+                    <!-- Linked Lists -->
+                    <VBox fx:id="linkedListCard" alignment="CENTER" spacing="16.0" styleClass="category-card,linkedlist-card"
+                          GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <FontIcon iconLiteral="fas-link" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Linked Lists" />
+                        <Label styleClass="category-description" text="Dynamic data structure operations with visual node connections" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="linkedListButton" styleClass="category-button" text="Explore Lists" />
+                    </VBox>
+
+                    <!-- Array Operations -->
+                    <VBox fx:id="arrayCard" alignment="CENTER" spacing="16.0" styleClass="category-card,array-card"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <FontIcon iconLiteral="fas-th-list" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Array Operations" />
+                        <Label styleClass="category-description" text="Dynamic array management with Insert, Delete, and Update operations" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="arrayButton" styleClass="category-button" text="Explore Arrays" />
+                    </VBox>
+
+                    <!-- Graph Algorithms -->
+                    <VBox fx:id="graphCard" alignment="CENTER" spacing="16.0" styleClass="category-card,graph-card"
+                          GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <FontIcon iconLiteral="fas-project-diagram" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Graph Algorithms" />
+                        <Label styleClass="category-description" text="BFS, DFS, and shortest path algorithms with interactive visualization" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="graphButton" styleClass="category-button" text="Explore Graphs" />
+                    </VBox>
+
+                    <!-- Third Row - Centered -->
+                    <!-- Performance Analysis -->
+                    <VBox fx:id="analysisCard" alignment="CENTER" spacing="16.0" styleClass="category-card,analysis-card"
+                          GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <FontIcon iconLiteral="fas-chart-line" iconSize="48" styleClass="category-icon" />
+                        <Label styleClass="category-title" text="Performance Analysis" />
+                        <Label styleClass="category-description" text="Big-O notation visualization and algorithm complexity comparison" wrapText="true" />
+                        <Label styleClass="category-status" text="✓ Ready" />
+                        <Button fx:id="analysisButton" styleClass="category-button" text="Analyze Performance" />
+                    </VBox>
+
+                </GridPane>
+
+                <!-- Features Highlight Section -->
+                <VBox alignment="CENTER" spacing="20.0" styleClass="features-section">
+                    <Label styleClass="section-title" text="Why Choose Our Algorithm Simulator?" />
+                    <HBox alignment="CENTER" spacing="40.0" styleClass="features-grid">
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="feature-item">
+                            <FontIcon iconLiteral="fas-eye" iconSize="32" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Visual Learning" />
+                            <Label styleClass="feature-description" text="Step-by-step animations" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="feature-item">
+                            <FontIcon iconLiteral="fas-rocket" iconSize="32" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Interactive" />
+                            <Label styleClass="feature-description" text="Hands-on experience" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="feature-item">
+                            <FontIcon iconLiteral="fas-graduation-cap" iconSize="32" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Educational" />
+                            <Label styleClass="feature-description" text="Perfect for students" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="8.0" styleClass="feature-item">
+                            <FontIcon iconLiteral="fas-cogs" iconSize="32" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Professional" />
+                            <Label styleClass="feature-description" text="Industry-standard tools" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Enhanced Status Bar -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="status-bar">
+            <padding>
+                <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
+            </padding>
+
+            <FontIcon iconLiteral="fas-circle" iconSize="8" styleClass="status-indicator" />
+            <Label fx:id="statusLabel" styleClass="status-text" text="Ready" />
+
+            <!-- Spacer -->
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Label styleClass="version-label" text="v2.0.0" />
+            <Label styleClass="build-label" text="Build 2025.01" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

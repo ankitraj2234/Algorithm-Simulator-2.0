@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.SearchingController" styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16" />
+                </graphic>
+            </Button>
+            <FontIcon iconLiteral="fas-search" iconSize="24" styleClass="header-icon" />
+            <Label styleClass="module-title" text="Search Algorithms - Linear &amp; Binary Search" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+
+            <!-- Control Section -->
+            <HBox spacing="20.0" styleClass="control-panel">
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                </padding>
+                <VBox spacing="10.0" prefWidth="200">
+                    <Label text="Algorithm:" />
+                    <ComboBox fx:id="algorithmComboBox" prefWidth="180" />
+                </VBox>
+                <VBox spacing="10.0" prefWidth="200">
+                    <Label text="Search Value:" />
+                    <TextField fx:id="searchValueField" prefWidth="180" />
+                </VBox>
+                <VBox spacing="10.0" prefWidth="300">
+                    <Label text="Array Input:" />
+                    <TextField fx:id="arrayInputField" prefWidth="280" />
+                </VBox>
+                <VBox spacing="10.0">
+                    <Label text="Actions:" />
+                    <HBox spacing="10.0">
+                        <Button fx:id="generateArrayButton" onAction="#generateRandomArray" styleClass="generate-button" text="Generate" />
+                        <Button fx:id="searchButton" onAction="#performSearch" styleClass="play-button" text="Search" />
+                        <Button fx:id="resetButton" onAction="#resetSearch" styleClass="reset-button" text="Reset" />
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Visualization Area - UPDATED WITH ARRAY-ELEMENT STYLING -->
+            <VBox spacing="15.0" styleClass="visualization-pane" VBox.vgrow="ALWAYS">
+                <Label styleClass="viz-title" text="🔍 Array Search Visualization" />
+
+                <!-- Array Display - STYLED TO MATCH ARRAY OPERATIONS -->
+                <ScrollPane fitToHeight="true" prefHeight="100">
+                    <HBox fx:id="arrayVisualization" spacing="5" alignment="CENTER"
+                          styleClass="array-display" />
+                </ScrollPane>
+
+                <!-- Progress and Results -->
+                <VBox spacing="10.0">
+                    <ProgressBar fx:id="searchProgress" prefWidth="600" />
+                    <Label fx:id="resultLabel" text="Enter a value and click Search to begin" styleClass="info-text" />
+                    <HBox spacing="30.0" alignment="CENTER_LEFT">
+                        <Label fx:id="comparisonsLabel" text="Comparisons: 0" styleClass="stat-label" />
+                        <Label fx:id="timeLabel" text="Time: 0ms" styleClass="stat-label" />
+                        <Label fx:id="statusLabel" text="Ready to search" styleClass="status-text" />
+                    </HBox>
+                </VBox>
+
+                <!-- Algorithm Information -->
+                <TextArea fx:id="algorithmInfo" prefHeight="200" styleClass="info-area" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,27 @@
+{
+  "Sorting Algorithms": [
+    { "name": "Bubble Sort",   "best": "O(n)",        "average": "O(n^2)",     "worst": "O(n^2)",     "space": "O(1)",     "stable": true,  "inPlace": true,  "notes": "Educational; fine for tiny or nearly-sorted inputs" },
+    { "name": "Selection Sort","best": "O(n^2)",      "average": "O(n^2)",     "worst": "O(n^2)",     "space": "O(1)",     "stable": false, "inPlace": true,  "notes": "Few swaps; always n^2 compares" },
+    { "name": "Insertion Sort","best": "O(n)",        "average": "O(n^2)",     "worst": "O(n^2)",     "space": "O(1)",     "stable": true,  "inPlace": true,  "notes": "Great for small or nearly sorted" },
+    { "name": "Merge Sort",    "best": "O(n log n)",  "average": "O(n log n)", "worst": "O(n log n)", "space": "O(n)",     "stable": true,  "inPlace": false, "notes": "Predictable; needs extra memory" },
+    { "name": "Quick Sort",    "best": "O(n log n)",  "average": "O(n log n)", "worst": "O(n^2)",     "space": "O(log n)", "stable": false, "inPlace": true,  "notes": "Fast on average; choose pivots carefully" },
+    { "name": "Heap Sort",     "best": "O(n log n)",  "average": "O(n log n)", "worst": "O(n log n)", "space": "O(1)",     "stable": false, "inPlace": true,  "notes": "In-place; not stable" }
+  ],
+  "Search Algorithms": [
+    { "name": "Linear Search",        "best": "O(1)",        "average": "O(n)",         "worst": "O(n)",        "space": "O(1)", "notes": "Unsorted data" },
+    { "name": "Binary Search",        "best": "O(1)",        "average": "O(log n)",     "worst": "O(log n)",    "space": "O(1)", "notes": "Requires sorted" },
+    { "name": "Interpolation Search", "best": "O(1)",        "average": "O(log log n)", "worst": "O(n)",        "space": "O(1)", "notes": "Uniformly distributed keys" }
+  ],
+  "Graph Algorithms": [
+    { "name": "BFS",                 "best": "O(V+E)", "average": "O(V+E)", "worst": "O(V+E)", "space": "O(V)", "notes": "Layered traversal" },
+    { "name": "DFS",                 "best": "O(V+E)", "average": "O(V+E)", "worst": "O(V+E)", "space": "O(V)", "notes": "Depth exploration" },
+    { "name": "Dijkstra's Algorithm","best": "O(V^2)", "average": "O(V^2)", "worst": "O(V^2)", "space": "O(V)", "notes": "Simple array impl; use heap for O((V+E) log V)" }
+  ],
+  "Data Structures": [
+    { "name": "Array",        "best": "O(1)",        "average": "O(n)",   "worst": "O(n)",   "space": "O(n)", "notes": "Fast random access" },
+    { "name": "Linked List",  "best": "O(1)",        "average": "O(n)",   "worst": "O(n)",   "space": "O(n)", "notes": "Fast insert/delete at ends" },
+    { "name": "Stack",        "best": "O(1)",        "average": "O(1)",   "worst": "O(1)",   "space": "O(n)", "notes": "LIFO" },
+    { "name": "Queue",        "best": "O(1)",        "average": "O(1)",   "worst": "O(1)",   "space": "O(n)", "notes": "FIFO" },
+    { "name": "Hash Table",   "best": "O(1)",        "average": "O(1)",   "worst": "O(n)",   "space": "O(n)", "notes": "Depends on hash & load factor" }
+  ]
+}
