@@ -311,5 +311,3 @@ Your **Algorithm Simulator** is a comprehensive, professional-grade JavaFX deskt
 
 This **Algorithm Simulator** represents a **professional-grade educational tool** that bridges the gap between theoretical computer science concepts and practical understanding through interactive visualization, comprehensive code examples, and detailed performance analysis. It's designed to serve both as a learning platform for students and a reference tool for professionals.
 
-[1](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/8836617/30b5f9e4-874d-4ea8-acbd-9a885b4d7c47/StackController.java)
-[2](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/8836617/0e4ddb61-f23f-479f-a6a5-f941277d6df3/LinkedListController.java)
