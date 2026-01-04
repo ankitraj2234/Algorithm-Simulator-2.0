@@ -1,313 +1,317 @@
-# Algorithm-Simulator-2.0
+# 🚀 Algorithm Simulator - Professional Edition v2.0
 
+[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.org/)
+[![JavaFX](https://img.shields.io/badge/JavaFX-24-blue.svg)](https://openjfx.io/)
+[![Maven](https://img.shields.io/badge/Maven-Build-green.svg)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-Educational-purple.svg)]()
 
-# **🚀 Algorithm Simulator - Complete Feature Overview**
+> **A comprehensive, professional-grade JavaFX desktop application for algorithm visualization, learning, and analysis.**
 
-Your **Algorithm Simulator** is a comprehensive, professional-grade JavaFX desktop application designed for algorithm visualization, learning, and analysis. Here's the complete breakdown of all features and capabilities:
+### 👨‍💻 Developer
+**Ankit Raj**  
+📧 [ar443203@gmail.com](mailto:ar443203@gmail.com)
 
-***
+---
 
-## **📋 Application Overview**
+![Algorithm Simulator Banner](docs/images/banner.png)
+
+---
+
+## 📋 Application Overview
 
 **Algorithm Simulator Professional Edition v2.0** is an advanced educational tool that transforms abstract algorithmic concepts into interactive, visual experiences. The application combines theoretical knowledge with practical implementation through real-time visualizations, comprehensive code examples, and performance analysis tools.
 
-***
+### ✨ What's New in v2.0
 
-## **🏗️ Core Architecture Features**
+| Feature | Description |
+|---------|-------------|
+| 🔐 **Secure Configuration** | Environment-based credential management |
+| 📊 **Professional Logging** | SLF4J + Logback with rolling file logs |
+| 🎨 **Jitter-Free UI** | Smooth hover effects without animation loops |
+| 🧹 **Code Quality** | AlertHelper, InputValidator, Cleanable interfaces |
+| 📦 **New Modules** | Queue Operations & Hash Table visualizations |
 
-### **Modern JavaFX Design**
+---
+
+## 🏗️ Core Architecture
+
+### Modern JavaFX Design
 - **Professional UI**: Clean, modern interface with AtlantaFX theme integration
 - **Responsive Layout**: Adaptive design that works across different screen sizes
 - **Multi-Window Support**: Independent module windows with proper lifecycle management
 - **Advanced Theme System**: Dynamic light/dark theme switching with live updates
 - **CSS-Powered Styling**: Professional styling with custom CSS variables
 
-### **Enterprise-Level Architecture**
-- **Service Layer Pattern**: Centralized NavigationService, ThemeManager, AnimationService
-- **Repository Pattern**: Structured data access with AlgorithmRepository
-- **MVC Architecture**: Clear separation between models, views, and controllers
-- **Resource Management**: Automatic cleanup and memory management
-- **Modular Design**: Independent algorithm modules with shared services
+### Enterprise-Level Architecture
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Algorithm Simulator                       │
+├─────────────────────────────────────────────────────────────┤
+│  Presentation Layer                                          │
+│  ├── Controllers (FXML-bound)                               │
+│  ├── Views (FXML + CSS)                                     │
+│  └── Animations (AnimationService)                          │
+├─────────────────────────────────────────────────────────────┤
+│  Service Layer                                               │
+│  ├── NavigationService (Window Management)                  │
+│  ├── ThemeManager (Theme Switching)                         │
+│  ├── TooltipService (Rich Tooltips)                         │
+│  ├── AlertHelper (Unified Dialogs)                          │
+│  └── PreferencesManager (Settings Persistence)              │
+├─────────────────────────────────────────────────────────────┤
+│  Data Layer                                                  │
+│  ├── Models (Stack, Queue, LinkedList, HashTable, Graph)    │
+│  ├── Repositories (Code Examples)                           │
+│  └── Configuration (JSON, Properties)                       │
+├─────────────────────────────────────────────────────────────┤
+│  Infrastructure                                              │
+│  ├── SLF4J + Logback (Logging)                              │
+│  ├── InputValidator (Validation)                            │
+│  └── Cleanable Interface (Resource Management)              │
+└─────────────────────────────────────────────────────────────┘
+```
 
-***
+---
 
-## **📚 Algorithm Modules**
+## 📚 Algorithm Modules
 
-### **1. Stack Data Structure**
+### 1. 📚 Stack Data Structure
 **Interactive Stack Visualization with Professional Animations**
 
-#### **Core Operations:**
-- **Push Operation**: Add elements with smooth slide-in animation
-- **Pop Operation**: Remove elements with scale-up and rotation effects
-- **Peek Operation**: Highlight top element with color-changing pulse animation
-- **Clear Stack**: Staggered removal animation for all elements
-
-#### **Advanced Features:**
-- **Capacity Management**: Visual progress bar showing stack utilization
-- **Overflow Protection**: Prevents stack overflow with user-friendly warnings
+- **Push/Pop/Peek/Clear** operations with smooth animations
+- **Capacity Management** with visual progress bar
 - **Smart Color Coding**: Red (near full), Orange (getting full), Green (normal)
-- **Input Validation**: Real-time validation for numeric inputs (1-999)
-- **Operation History**: Comprehensive logging of all stack operations
+- **Complete Code Examples** with syntax highlighting
 
-#### **Visual Elements:**
-- **3D-Style Elements**: Rounded corners, shadows, and depth effects
-- **Position Tracking**: Each element shows its current position
-- **Smooth Transitions**: Professional animations for all operations
-- **Status Indicators**: Real-time display of size, top element, and capacity
-
-### **2. LinkedList Data Structure**
+### 2. 🔗 LinkedList Data Structure
 **Complete LinkedList Implementation with Bidirectional Operations**
 
-#### **Core Operations:**
-- **Insert at Beginning**: Slide-down animation from above
-- **Insert at End**: Slide-in animation from right
-- **Insert at Position**: Targeted insertion with position validation
-- **Delete by Value**: Find-and-remove with rotation effects
-- **Delete by Position**: Direct position-based removal
-- **Search Operations**: Sequential search with visual progression
+- **Insert**: Beginning, End, Position-based
+- **Delete**: By value or by position
+- **Search**: Sequential search with visual progression
+- **Node Visualization**: Circular nodes with arrow connections
 
-#### **Advanced Features:**
-- **Node Visualization**: Circular nodes with arrows showing connections
-- **Position Management**: Auto-updating position labels for all nodes
-- **Null Terminator**: Visual indication of list end
-- **Real-time Validation**: Smart input validation and error handling
-- **Multi-Operation Support**: Concurrent operation management
+### 3. 📊 Queue Operations *(New in v2.0)*
+**FIFO Data Structure with Professional Animations**
 
-#### **Animation System:**
-- **Insertion Animations**: Smooth scaling and positioning effects
-- **Deletion Animations**: 360° rotation with fade-out effects
-- **Search Highlighting**: Progressive orange highlighting during search
-- **Success Highlighting**: Green pulse animation for found elements
+- **Enqueue/Dequeue/Front/Rear** operations
+- **Horizontal visualization** showing queue flow
+- **Capacity tracking** with color-coded progress
+- **Real-time size and element tracking**
 
-### **3. Sorting Algorithms**
+### 4. #️⃣ Hash Table *(New in v2.0)*
+**Key-Value Storage with Collision Handling Visualization**
+
+- **Insert/Search/Delete** operations
+- **Hash function visualization**
+- **Collision handling** (chaining) with visual representation
+- **Load factor monitoring**
+
+### 5. 📈 Sorting Algorithms
 **Comprehensive Sorting Algorithm Visualization (9 Algorithms)**
 
-#### **Supported Algorithms:**
-- **Basic Sorts**: Bubble Sort, Selection Sort, Insertion Sort
-- **Advanced Sorts**: Merge Sort, Quick Sort, Heap Sort
-- **Specialized Sorts**: Shell Sort, Radix Sort, Counting Sort
+| Basic | Advanced | Specialized |
+|-------|----------|-------------|
+| Bubble Sort | Merge Sort | Shell Sort |
+| Selection Sort | Quick Sort | Radix Sort |
+| Insertion Sort | Heap Sort | Counting Sort |
 
-#### **Visualization Features:**
-- **Real-time Bar Chart**: Dynamic height-based visualization
-- **Color Coding**: Orange (comparison), Red (swap), Green (completion)
-- **Step Control**: Play, pause, step-by-step, and speed control
-- **Statistics Tracking**: Comparisons, swaps, and execution time
-- **Custom Arrays**: Support for user-defined input arrays
+- **Real-time Bar Chart** visualization
+- **Step Control**: Play, pause, step-by-step, speed control
+- **Statistics**: Comparisons, swaps, execution time
 
-#### **Educational Content:**
-- **Algorithm Information**: Detailed complexity analysis for each algorithm
-- **Pseudocode Viewer**: Complete pseudocode with Java implementations
-- **Performance Comparison**: Side-by-side algorithm analysis
-- **Best Practices**: Usage recommendations for different scenarios
-
-### **4. Searching Algorithms**
+### 6. 🔍 Searching Algorithms
 **Interactive Search Algorithm Demonstrations**
 
-#### **Search Methods:**
-- **Linear Search**: Sequential element checking with highlighting
+- **Linear Search**: Sequential element checking
 - **Binary Search**: Divide-and-conquer with range visualization
-- **Interpolation Search**: Smart position estimation based on value distribution
+- **Interpolation Search**: Smart position estimation
 
-#### **Visualization Elements:**
-- **Array Visualization**: Index-based element display
-- **Search Progress**: Real-time highlighting of examined elements
-- **Range Indicators**: Visual bounds for binary/interpolation search
-- **Performance Metrics**: Comparisons count and execution time
-- **Success/Failure States**: Clear visual feedback for search results
+### 7. 🕸️ Graph Algorithms
+**Advanced Graph Theory Visualization**
 
-### **5. Graph Algorithms**
-**Advanced Graph Theory Visualization and Algorithms**
+- **Traversals**: BFS, DFS
+- **Shortest Path**: Dijkstra's, A* (basic)
+- **Topological Sort**
+- **Interactive Canvas**: Drag-and-drop positioning
 
-#### **Graph Operations:**
-- **Vertex Management**: Add, remove, and search vertices
-- **Edge Management**: Add/remove weighted and unweighted edges
-- **Graph Types**: Support for directed/undirected, weighted/unweighted graphs
+### 8. 📉 Performance Analysis
+**Algorithm Complexity Comparison**
 
-#### **Traversal Algorithms:**
-- **BFS (Breadth-First Search)**: Level-by-level exploration
-- **DFS (Depth-First Search)**: Deep exploration with backtracking
-- **Shortest Path**: Unweighted shortest path using BFS
-- **Dijkstra's Algorithm**: Weighted shortest path algorithm
-- **A* Pathfinding**: Heuristic-based pathfinding (basic implementation)
-- **Topological Sort**: DAG ordering algorithm
+- **Time Complexity Curves**: O(1), O(log n), O(n), O(n log n), O(n²)
+- **Side-by-side comparison** of algorithms
+- **Recommendations** based on use cases
 
-#### **Advanced Features:**
-- **Interactive Canvas**: Drag-and-drop vertex positioning with real-time edge updates
-- **Double-Click Drag**: Enhanced drag system with visual feedback
-- **Layout Algorithms**: Circular and force-based automatic layouts
-- **Zoom and Pan**: Canvas navigation with scroll wheel zoom
-- **File Operations**: Save and load graph configurations
+---
 
-#### **Visual Elements:**
-- **Professional Vertex Design**: Circular nodes with labels and shadows
-- **Dynamic Edges**: Real-time edge updates during vertex movement
-- **Algorithm Animation**: Step-by-step algorithm execution visualization
-- **Status Information**: Graph density, vertex count, and edge statistics
+## 🔧 Technical Specifications
 
-### **6. Algorithm Analysis**
-**Comprehensive Algorithm Performance Analysis and Comparison**
+### Requirements
+| Component | Version |
+|-----------|---------|
+| Java | 21+ |
+| JavaFX | 24.0.2 |
+| Maven | 3.8+ |
 
-#### **Analysis Capabilities:**
-- **Time Complexity Visualization**: Mathematical complexity curves for multiple algorithms
-- **Performance Comparison**: Side-by-side algorithm analysis
-- **Complexity Categories**: Support for all major complexity classes (O(1), O(log n), O(n), O(n²), etc.)
-- **Multi-Algorithm Charts**: Up to 6 complexity curves simultaneously
+### Dependencies
+```xml
+<!-- Core -->
+<dependency>javafx-controls, javafx-fxml</dependency>
+<dependency>atlantafx-base (Theme Engine)</dependency>
+<dependency>ikonli-javafx (Icons)</dependency>
+<dependency>controlsfx (Enhanced Controls)</dependency>
 
-#### **Comparative Features:**
-- **Algorithm Recommendations**: Smart suggestions based on use cases
-- **Practical Considerations**: Memory usage, stability, and implementation notes
-- **Domain Tables**: Complete algorithm family overviews
-- **Interactive Selection**: Dynamic algorithm switching and comparison
+<!-- Logging -->
+<dependency>slf4j-api:2.0.9</dependency>
+<dependency>logback-classic:1.4.14</dependency>
 
-#### **Educational Content:**
-- **Detailed Analysis Reports**: Comprehensive algorithm comparisons
-- **Use Case Guidance**: When to use each algorithm
-- **Performance Narratives**: Human-readable analysis explanations
+<!-- Email (Optional) -->
+<dependency>jakarta.mail:2.0.1</dependency>
+```
 
-***
+### Build & Run
+```bash
+# Clone and build
+git clone https://github.com/yourusername/algorithm-simulator.git
+cd algorithm-simulator
+mvn clean install
 
-## **💻 Code Learning Features**
+# Run the application
+mvn javafx:run
+```
 
-### **Interactive Code Repositories**
-#### **Stack Code Examples:**
-- **Basic Operations**: Push, Pop, Peek, Clear implementations
-- **Stack Management**: Overflow/underflow handling
-- **Applications**: Balanced parentheses, expression evaluation
-- **Advanced Features**: Multi-stack, stack with minimum operations
+---
 
-#### **LinkedList Code Examples:**
-- **Basic Operations**: Insert, delete, search implementations
-- **Singly LinkedList**: Complete node and list implementations
-- **Doubly LinkedList**: Bidirectional navigation and operations
-- **Circular LinkedList**: Circular reference management
-- **Advanced Operations**: Reverse, merge, cycle detection, sorting
+## 📊 Logging System
 
-### **Code Popup Windows**
-- **Syntax Highlighting**: Professional code presentation
-- **Copy to Clipboard**: One-click code copying functionality
-- **Word Wrap Toggle**: Flexible code viewing options
-- **Category Organization**: Hierarchical code example structure
-- **Search Functionality**: Quick code example discovery
-- **Expand/Collapse**: Efficient navigation through code categories
+Professional logging with SLF4J + Logback:
 
-***
+```
+logs/
+├── algorithm-simulator.log        # Current log
+├── algorithm-simulator.2026-01-03.log  # Historical
+└── algorithm-simulator.2026-01-02.log
+```
 
-## **🎨 User Experience Features**
+**Features**:
+- Colored console output
+- Daily rolling file logs (30-day retention)
+- 100MB total size cap
+- DEBUG level for com.simulator package
 
-### **Professional Theme System**
-- **Multiple Themes**: PrimerLight, PrimerDark, Nord, Cupertino themes
-- **Live Theme Switching**: Real-time theme updates across all windows
-- **Automatic Scene Registration**: Smart theme management for popup windows
-- **CSS Variables**: Consistent styling across the application
+---
 
-### **Advanced Animation System**
-- **Speed Control**: Adjustable animation speed (0.1x to 5x)
-- **Smooth Transitions**: Professional easing and interpolation
-- **Visual Feedback**: Immediate response to user interactions
-- **Performance Optimized**: Efficient animation rendering
+## ⚙️ Configuration
 
-### **Intelligent Navigation**
-- **Multi-Window Management**: Support for up to 10 concurrent windows
-- **Window Cascading**: Smart window positioning
-- **Keyboard Shortcuts**: Professional hotkey support
-  - **Ctrl+W**: Close window
-  - **Ctrl+T**: Toggle theme
-  - **Ctrl+M**: Maximize/minimize
-  - **F11**: Fullscreen mode
-  - **Esc**: Close current window
+### Email Service (Optional)
+For feedback functionality, configure via environment variables:
+```bash
+# Windows PowerShell
+$env:EMAIL_SENDER = "your-email@gmail.com"
+$env:EMAIL_PASSWORD = "your-app-password"
+$env:EMAIL_RECIPIENT = "feedback@example.com"
 
-### **Input Validation & Error Handling**
-- **Real-time Validation**: Immediate feedback on invalid inputs
-- **Smart Range Checking**: Contextual validation for different operations
-- **User-Friendly Errors**: Clear, actionable error messages
-- **Graceful Degradation**: Robust error handling throughout the application
+# Linux/Mac
+export EMAIL_SENDER="your-email@gmail.com"
+export EMAIL_PASSWORD="your-app-password"
+export EMAIL_RECIPIENT="feedback@example.com"
+```
 
-***
+Or create `src/main/resources/config/email.properties`:
+```properties
+email.sender=your-email@gmail.com
+email.password=your-app-password
+email.recipient=feedback@example.com
+```
 
-## **📊 Educational Use Cases**
+> ⚠️ **Security Note**: Never commit credentials to version control. The `email.properties` file is excluded in `.gitignore`.
 
-### **Computer Science Education**
-#### **For Students:**
-- **Visual Learning**: Transform abstract concepts into concrete visualizations
-- **Algorithm Comparison**: Understand trade-offs between different approaches
-- **Implementation Reference**: Access complete, working code examples
-- **Performance Understanding**: See how algorithms perform with different inputs
-- **Interactive Experimentation**: Test algorithms with custom data
+---
 
-#### **For Educators:**
-- **Classroom Demonstrations**: Professional visualizations for lectures
-- **Assignment Material**: Code examples for homework and projects
-- **Concept Reinforcement**: Visual aids for complex algorithmic concepts
-- **Assessment Tools**: Students can verify their understanding interactively
+## ⌨️ Keyboard Shortcuts
 
-### **Professional Development**
-#### **For Developers:**
-- **Algorithm Refresher**: Quick review of fundamental algorithms
-- **Implementation Patterns**: Best practices for common data structures
-- **Performance Analysis**: Understanding algorithmic complexity in practice
-- **Code References**: Ready-to-use implementations for real projects
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+W` | Close current window |
+| `Ctrl+T` | Toggle theme |
+| `Ctrl+M` | Maximize/minimize |
+| `F11` | Fullscreen mode |
+| `Esc` | Close current window |
+| `Ctrl+Q` | Quit application |
 
-#### **For Technical Interviews:**
-- **Algorithm Practice**: Visual understanding of common interview topics
-- **Complexity Analysis**: Quick reference for time/space complexity
-- **Implementation Preparation**: Complete code examples for study
-- **Concept Reinforcement**: Interactive learning for better retention
+---
 
-### **Research and Analysis**
-#### **Algorithm Research:**
-- **Performance Comparison**: Side-by-side algorithm analysis
-- **Complexity Visualization**: Mathematical complexity represented graphically
-- **Edge Case Testing**: Interactive testing with various input types
-- **Documentation**: Complete algorithm information and references
+## 🎨 Theme System
 
-***
+- **PrimerLight** - Clean, GitHub-inspired light theme
+- **PrimerDark** - Modern dark theme
+- **Nord** - Arctic-inspired color palette
+- **Cupertino** - Apple-inspired design
 
-## **🔧 Technical Specifications**
+Themes apply live across all open windows.
 
-### **System Requirements**
-- **Platform**: Cross-platform JavaFX application
-- **Java Version**: Modern Java with JavaFX runtime
-- **Memory**: Efficient memory usage with automatic cleanup
-- **Display**: Responsive design supporting multiple screen sizes
+---
 
-### **Performance Features**
-- **Lazy Loading**: On-demand resource loading for optimal startup
-- **Memory Management**: Automatic cleanup and garbage collection optimization
-- **Animation Optimization**: Hardware-accelerated animations where possible
-- **Multi-threading**: Asynchronous operations for responsive UI
+## 🎯 Target Audience
 
-### **Data Management**
-- **JSON Configuration**: Algorithm data stored in structured JSON format
-- **Session Persistence**: Operation history and state management
-- **File I/O**: Graph save/load functionality with error handling
+- 🎓 **Computer Science Students** (Undergraduate/Graduate)
+- 👨‍🏫 **CS Educators and Professors**
+- 💼 **Technical Interview Candidates**
+- 👨‍💻 **Professional Developers** (Reference/Review)
+- 🏆 **Coding Competition Participants**
 
-***
+---
 
-## **🌟 Unique Selling Points**
+## 📁 Project Structure
 
-1. **Comprehensive Coverage**: 6 major algorithm domains with 20+ specific algorithms
-2. **Professional Quality**: Enterprise-level architecture and design patterns
-3. **Educational Focus**: Designed specifically for learning and teaching
-4. **Interactive Experience**: Not just visualization, but interactive experimentation
-5. **Complete Code Examples**: Full implementations, not just pseudocode
-6. **Modern Technology**: Current JavaFX with professional UI libraries
-7. **Extensible Design**: Modular architecture supporting future enhancements
-8. **Cross-Platform**: Runs on Windows, macOS, and Linux
+```
+algorithm-simulator/
+├── src/main/java/com/simulator/
+│   ├── AlgorithmSimulatorApplication.java  # Entry point
+│   ├── MainController.java                 # Main view controller
+│   ├── *Controller.java                    # Module controllers
+│   ├── *Service.java                       # Service layer
+│   ├── *Model.java                         # Data models
+│   ├── *Repository.java                    # Code repositories
+│   └── AlertHelper.java                    # Unified dialogs
+├── src/main/resources/
+│   ├── fxml/                               # View definitions
+│   ├── css/                                # Stylesheets
+│   ├── config/                             # Configuration files
+│   └── logback.xml                         # Logging config
+├── logs/                                   # Application logs
+└── pom.xml                                 # Maven configuration
+```
 
-***
+---
 
-## **📈 Target Audience**
+## 🌟 Key Features Summary
 
-- **Computer Science Students** (Undergraduate/Graduate)
-- **Software Engineering Bootcamp Students**
-- **Self-Learning Programmers**
-- **Computer Science Educators and Professors**
-- **Technical Interview Candidates**
-- **Professional Developers** (Algorithm Review/Reference)
-- **Coding Competition Participants**
-- **Algorithm Researchers and Enthusiasts**
+| Category | Features |
+|----------|----------|
+| **Algorithms** | 6 domains, 20+ specific algorithms |
+| **Visualizations** | Real-time animations, step control |
+| **Code Examples** | Complete implementations with syntax highlighting |
+| **UI/UX** | Professional themes, smooth animations, responsive |
+| **Architecture** | Enterprise patterns, modular design |
+| **Quality** | SLF4J logging, input validation, error handling |
+| **Security** | No hardcoded credentials, environment-based config |
 
-***
+---
 
-This **Algorithm Simulator** represents a **professional-grade educational tool** that bridges the gap between theoretical computer science concepts and practical understanding through interactive visualization, comprehensive code examples, and detailed performance analysis. It's designed to serve both as a learning platform for students and a reference tool for professionals.
+## 📄 License
 
+This project is for educational purposes. See [LICENSE](LICENSE) for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
+
+<p align="center">
+  <strong>Algorithm Simulator Professional Edition v2.0</strong><br>
+  <em>Bridging the gap between theory and understanding</em>
+</p>
