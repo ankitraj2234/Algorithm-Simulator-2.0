@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.AnalysisController" styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0"/>
+            </padding>
+
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16"/>
+                </graphic>
+            </Button>
+
+            <FontIcon iconLiteral="fas-chart-line" iconSize="24" styleClass="header-icon"/>
+            <Label styleClass="module-title" text="Performance Analysis — Compare Two Algorithms"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" styleClass="main-scroll-pane">
+            <content>
+                <VBox spacing="20.0" styleClass="scrollable-content">
+                    <padding>
+                        <Insets bottom="30.0" left="20.0" right="20.0" top="20.0"/>
+                    </padding>
+
+                    <!-- Control Panel -->
+                    <HBox spacing="16.0" styleClass="control-panel" alignment="CENTER_LEFT">
+                        <padding>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                        </padding>
+
+                        <VBox spacing="6.0">
+                            <Label text="Type:"/>
+                            <ComboBox fx:id="typeComboBox" prefWidth="220"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Algorithm A:"/>
+                            <ComboBox fx:id="algoAComboBox" prefWidth="220"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Algorithm B:"/>
+                            <ComboBox fx:id="algoBComboBox" prefWidth="220"/>
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Actions:"/>
+                            <HBox spacing="8.0">
+                                <Button fx:id="swapButton" text="Swap" styleClass="step-button" onAction="#swapAlgorithms"/>
+                                <Button fx:id="analyzeButton" text="Analyze" styleClass="play-button" onAction="#analyze"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Summary Tiles -->
+                    <HBox spacing="16.0">
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="🔷 Algorithm A Summary"/>
+                            <GridPane hgap="10" vgap="8">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="30"/>
+                                    <ColumnConstraints percentWidth="70"/>
+                                </columnConstraints>
+                                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <Label fx:id="nameALabel" text="-" styleClass="stat-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <Label text="Best:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <Label fx:id="bestALabel" text="-" styleClass="stat-label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                <Label text="Average:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <Label fx:id="avgALabel" text="-" styleClass="stat-label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                <Label text="Worst:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <Label fx:id="worstALabel" text="-" styleClass="stat-label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                <Label text="Space:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                <Label fx:id="spaceALabel" text="-" styleClass="stat-label" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                            </GridPane>
+                        </VBox>
+
+                        <VBox spacing="8.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="🟣 Algorithm B Summary"/>
+                            <GridPane hgap="10" vgap="8">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="30"/>
+                                    <ColumnConstraints percentWidth="70"/>
+                                </columnConstraints>
+                                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                <Label fx:id="nameBLabel" text="-" styleClass="stat-label" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                <Label text="Best:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                <Label fx:id="bestBLabel" text="-" styleClass="stat-label" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                <Label text="Average:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                <Label fx:id="avgBLabel" text="-" styleClass="stat-label" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                <Label text="Worst:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                <Label fx:id="worstBLabel" text="-" styleClass="stat-label" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                <Label text="Space:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                                <Label fx:id="spaceBLabel" text="-" styleClass="stat-label" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                            </GridPane>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="📈 Time Complexity (Best • Avg • Worst)"/>
+                            <LineChart fx:id="complexityChart" animated="false" createSymbols="false" prefHeight="400" minHeight="400">
+                                <xAxis><NumberAxis fx:id="xAxis" label="Input Size (n)"/></xAxis>
+                                <yAxis><NumberAxis fx:id="yAxis" label="Relative Cost"/></yAxis>
+                            </LineChart>
+                        </VBox>
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="📊 Relative Performance (Average Case)"/>
+                            <BarChart fx:id="performanceChart" animated="false" prefHeight="400" minHeight="400">
+                                <xAxis><CategoryAxis fx:id="perfXAxis"/></xAxis>
+                                <yAxis><NumberAxis fx:id="perfYAxis" label="Lower is better"/></yAxis>
+                            </BarChart>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Comparison and Detailed Analysis -->
+                    <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="🔍 Selected Algorithms"/>
+                            <TableView fx:id="comparisonTable" prefHeight="200" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="nameColumn" text="Algorithm" prefWidth="160"/>
+                                    <TableColumn fx:id="bestColumn" text="Best" prefWidth="110"/>
+                                    <TableColumn fx:id="avgColumn" text="Average" prefWidth="110"/>
+                                    <TableColumn fx:id="worstColumn" text="Worst" prefWidth="110"/>
+                                    <TableColumn fx:id="spaceColumn" text="Space" prefWidth="110"/>
+                                </columns>
+                            </TableView>
+                        </VBox>
+
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS" styleClass="visualization-pane">
+                            <Label styleClass="viz-title" text="📋 Detailed Analysis"/>
+                            <TextArea fx:id="analysisText" wrapText="true" prefHeight="500" minHeight="500" VBox.vgrow="ALWAYS" styleClass="info-area"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Always-visible domain table -->
+                    <VBox spacing="10.0" styleClass="visualization-pane">
+                        <Label styleClass="viz-title" text="📚 All Algorithms in Category"/>
+                        <TableView fx:id="domainTable" prefHeight="350" minHeight="300" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="dNameColumn" text="Algorithm" prefWidth="180"/>
+                                <TableColumn fx:id="dBestColumn" text="Best" prefWidth="130"/>
+                                <TableColumn fx:id="dAvgColumn" text="Average" prefWidth="130"/>
+                                <TableColumn fx:id="dWorstColumn" text="Worst" prefWidth="130"/>
+                                <TableColumn fx:id="dSpaceColumn" text="Space" prefWidth="130"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

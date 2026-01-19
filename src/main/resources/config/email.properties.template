@@ -1,0 +1,13 @@
+# Email Configuration Template
+# =============================
+# Copy this file to email.properties and fill in your credentials
+# DO NOT commit email.properties to version control!
+#
+# Alternatively, set environment variables:
+#   EMAIL_SENDER=your-email@gmail.com
+#   EMAIL_PASSWORD=your-app-password
+#   EMAIL_RECIPIENT=feedback@yourcompany.com
+
+email.sender=
+email.password=
+email.recipient=

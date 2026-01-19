@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.CodePopupController"
+            fx:id="rootPane"
+            styleClass="main-layout, algorithm-page, code-popup-window">
+
+    <!-- Header -->
+    <top>
+        <VBox fx:id="headerContainer" styleClass="popup-header">
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+                <padding>
+                    <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+                </padding>
+
+                <FontIcon iconLiteral="fas-code" iconSize="24" styleClass="header-icon" />
+                <Label styleClass="popup-title" text="LinkedList Code Examples" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <HBox spacing="12.0" alignment="CENTER_RIGHT">
+                    <Button fx:id="expandAllBtn" onAction="#expandAllCategories" styleClass="control-button">
+                        <graphic><FontIcon iconLiteral="fas-expand-arrows-alt" iconSize="12" /></graphic>
+                        <tooltip><Tooltip text="Expand All Categories" /></tooltip>
+                    </Button>
+
+                    <Button fx:id="collapseAllBtn" onAction="#collapseAllCategories" styleClass="control-button">
+                        <graphic><FontIcon iconLiteral="fas-compress-arrows-alt" iconSize="12" /></graphic>
+                        <tooltip><Tooltip text="Collapse All Categories" /></tooltip>
+                    </Button>
+
+                    <Separator orientation="VERTICAL" />
+
+                    <Button onAction="#closePopup" styleClass="nav-button">
+                        <graphic><FontIcon iconLiteral="fas-times" iconSize="14" /></graphic>
+                        <tooltip><Tooltip text="Close Window" /></tooltip>
+                    </Button>
+                </HBox>
+            </HBox>
+
+            <!-- Enhanced Search Bar -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+                <padding>
+                    <Insets bottom="5" left="25.0" right="25.0" top="5.0" />
+                </padding>
+
+                <FontIcon iconLiteral="fas-search" iconSize="16" styleClass="search-icon" />
+                <TextField fx:id="searchField" promptText="🔍 Search code examples, algorithms, methods..."
+                           styleClass="text-field" HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="8.0" left="12.0" right="12.0" top="8.0" />
+                    </padding>
+                </TextField>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <SplitPane fx:id="mainSplitPane" dividerPositions="0.35" styleClass="split-pane">
+
+            <!-- 🎯 ULTIMATE FIX: AnchorPane wrapper with proper ScrollPane configuration -->
+            <AnchorPane styleClass="category-panel">
+                <ScrollPane fx:id="categoryScrollPane"
+                            AnchorPane.topAnchor="0"
+                            AnchorPane.bottomAnchor="0"
+                            AnchorPane.leftAnchor="0"
+                            AnchorPane.rightAnchor="0"
+                            fitToWidth="true"
+                            fitToHeight="false"
+                            hbarPolicy="NEVER"
+                            vbarPolicy="AS_NEEDED"
+                            styleClass="scroll-pane">
+                    <content>
+                        <VBox fx:id="categoryContainer"
+                              spacing="20"
+                              styleClass="category-container">
+                            <padding>
+                                <!-- 🔧 CRITICAL: Massive bottom padding ensures complete visibility -->
+                                <Insets bottom="100.0" left="25.0" right="25.0" top="25.0" />
+                            </padding>
+                            <!-- Categories will be added dynamically -->
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </AnchorPane>
+
+            <!-- Right: Code Display -->
+            <VBox fx:id="codeDisplayContainer" styleClass="code-display-container">
+
+                <!-- Code Header -->
+                <VBox fx:id="codeHeaderSection" styleClass="code-header-section">
+                    <padding>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="20.0" />
+                    </padding>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                        <Label fx:id="codeTitle" styleClass="viz-title" text="🔗 Select a code example from the categories" />
+
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                            <Button fx:id="copyButton" onAction="#copyCodeToClipboard"
+                                    styleClass="copy-button" disable="true">
+                                <graphic><FontIcon iconLiteral="fas-copy" iconSize="12" /></graphic>
+                                Copy Code
+                            </Button>
+
+                            <Button fx:id="wrapTextButton" onAction="#toggleWordWrap"
+                                    styleClass="control-button">
+                                <graphic><FontIcon iconLiteral="fas-align-left" iconSize="12" /></graphic>
+                                Wrap
+                            </Button>
+                        </HBox>
+                    </HBox>
+
+                    <Label fx:id="codeDescription" styleClass="info-text" text="" wrapText="true">
+                        <padding>
+                            <Insets top="8.0" />
+                        </padding>
+                    </Label>
+                </VBox>
+
+                <!-- Code Area -->
+                <VBox fx:id="codeAreaSection" VBox.vgrow="ALWAYS" styleClass="code-area-section">
+                    <padding>
+                        <Insets bottom="20" left="25.0" right="25.0" top="10" />
+                    </padding>
+
+                    <TextArea fx:id="codeTextArea"
+                              editable="false"
+                              wrapText="false"
+                              styleClass="code-text-area"
+                              VBox.vgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        </padding>
+                    </TextArea>
+                </VBox>
+
+                <!-- Code Footer -->
+                <VBox fx:id="codeFooterSection" styleClass="code-footer-section">
+                    <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="15.0" />
+                    </padding>
+
+
+
+                    <HBox alignment="CENTER_LEFT" spacing="15.0">
+                        <Label fx:id="codeStats" styleClass="stat-label" text="Ready to explore LinkedList implementations" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="copyStatus" styleClass="info-text" text="" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </SplitPane>
+    </center>
+
+</BorderPane>

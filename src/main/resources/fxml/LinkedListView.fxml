@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/24.0.2" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.simulator.LinkedListController" styleClass="algorithm-page, main-layout">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="module-header">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+
+            <Button onAction="#goBack" styleClass="nav-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-arrow-left" iconSize="16" />
+                </graphic>
+            </Button>
+
+            <FontIcon iconLiteral="fas-link" iconSize="24" styleClass="header-icon" />
+            <Label styleClass="module-title" text="Linked List Operations - Dynamic Data Structure" />
+
+            <!-- NEW: Spacer and Codes Button -->
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="codesButton" onAction="#openCodesPopup" styleClass="nav-button codes-button">
+                <graphic>
+                    <FontIcon iconLiteral="fas-code" iconSize="16" />
+                </graphic>
+                <tooltip>
+                    <Tooltip text="View LinkedList Code Examples" />
+                </tooltip>
+            </Button>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+
+            <!-- Control Panel -->
+            <HBox spacing="20.0" styleClass="control-panel">
+                <padding>
+                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                </padding>
+
+                <!-- Input Fields -->
+                <VBox spacing="8.0">
+                    <Label text="Value:" />
+                    <TextField fx:id="inputField" prefWidth="100" />
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <Label text="Position:" />
+                    <TextField fx:id="positionField" prefWidth="80" />
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <Label text="Search:" />
+                    <TextField fx:id="searchField" prefWidth="100" />
+                </VBox>
+
+                <!-- Operation Buttons -->
+                <VBox spacing="8.0">
+                    <Label text="Insert Operations:" />
+                    <HBox spacing="5.0">
+                        <Button fx:id="insertBeginButton" onAction="#insertAtBeginning" styleClass="control-button push-button" text="Begin" />
+                        <Button fx:id="insertEndButton" onAction="#insertAtEnd" styleClass="control-button play-button" text="End" />
+                        <Button fx:id="insertPositionButton" onAction="#insertAtPosition" styleClass="control-button step-button" text="Position" />
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <Label text="Delete &amp; Search:" />
+                    <HBox spacing="5.0">
+                        <Button fx:id="deleteValueButton" onAction="#deleteValue" styleClass="control-button pop-button" text="Delete" />
+                        <Button fx:id="deletePositionButton" onAction="#deleteAtPosition" styleClass="control-button reset-button" text="Del Pos" />
+                        <Button fx:id="searchButton" onAction="#searchValue" styleClass="control-button peek-button" text="Search" />
+                    </HBox>
+                </VBox>
+
+                <!-- Utility Buttons -->
+                <VBox spacing="8.0">
+                    <Label text="Utilities:" />
+                    <HBox spacing="5.0">
+                        <Button fx:id="clearButton" onAction="#clearList" styleClass="control-button clear-button" text="Clear" />
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Visualization Area -->
+            <VBox spacing="15.0" styleClass="visualization-pane" VBox.vgrow="ALWAYS">
+                <Label styleClass="viz-title" text="🔗 Linked List Visualization" />
+
+                <!-- List Display -->
+                <ScrollPane fitToHeight="true" prefHeight="120">
+                    <HBox fx:id="listVisualization" spacing="10" alignment="CENTER_LEFT" />
+                </ScrollPane>
+
+                <!-- Status and Results -->
+                <HBox spacing="30.0" alignment="CENTER_LEFT">
+                    <Label fx:id="statusLabel" text="LinkedList is Empty" styleClass="status-text" />
+                    <Label fx:id="sizeLabel" text="Size: 0" styleClass="stat-label" />
+                    <Label fx:id="resultLabel" text="Results will appear here" styleClass="info-text" />
+                </HBox>
+
+                <ProgressBar fx:id="operationProgress" prefWidth="600" />
+
+                <!-- Operation History -->
+                <TextArea fx:id="operationHistory" prefHeight="150" styleClass="info-area" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
